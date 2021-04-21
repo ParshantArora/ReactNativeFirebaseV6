@@ -1,0 +1,82 @@
+{
+  "project_info": {
+    "project_number": "462640156975",
+    "project_id": "ateazorderingapp-6d8cf",
+    "storage_bucket": "ateazorderingapp-6d8cf.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:462640156975:android:eb38788e98424c3b4c51da",
+        "android_client_info": {
+          "package_name": "com.ateazorderingapp"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "462640156975-69v1ohptvopqpmnhtfhf5tcm5msf64pd.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCv26sWJstggUOLGkxvnCFELZcLWf7g6kg"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "462640156975-69v1ohptvopqpmnhtfhf5tcm5msf64pd.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "462640156975-jaj9o3t2ekkugn6f229p7c01qbjqp8m4.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.ateazorderingapp"
+              }
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:462640156975:android:4d5f09b1dae8aba24c51da",
+        "android_client_info": {
+          "package_name": "com.rnfirebasev6"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "462640156975-69v1ohptvopqpmnhtfhf5tcm5msf64pd.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCv26sWJstggUOLGkxvnCFELZcLWf7g6kg"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "462640156975-69v1ohptvopqpmnhtfhf5tcm5msf64pd.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "462640156975-jaj9o3t2ekkugn6f229p7c01qbjqp8m4.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.ateazorderingapp"
+              }
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

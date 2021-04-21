@@ -6,7 +6,7 @@
  * @flow strict-local
  */
 
-import React from 'react';
+import React , { useEffect } from 'react';
 import {
   SafeAreaView,
   StyleSheet,
@@ -14,6 +14,7 @@ import {
   View,
   Text,
   StatusBar,
+  Platform,
 } from 'react-native';
 
 import {
@@ -23,8 +24,84 @@ import {
   DebugInstructions,
   ReloadInstructions,
 } from 'react-native/Libraries/NewAppScreen';
+import { Alert } from 'react-native';
+import messaging from '@react-native-firebase/messaging';
 
 const App: () => React$Node = () => {
+let  unsubscribe;
+  
+  const firebaseFunctionCall = () =>{
+    messaging()
+    .getToken()
+    .then((fcmToken) => {
+      if (fcmToken) {
+        console.log("fcmTokenfcmTokenfcmToken",fcmToken)
+
+      } else {
+        console.log('[FCMService] User doesnt not have a device token');
+      }
+    })
+    .catch((error) => {
+      console.log('[FCMService] getToken rejected', error);
+    });
+
+     unsubscribe = messaging().onMessage(async remoteMessage => {
+      Alert.alert('A new FCM message arrived!', JSON.stringify(remoteMessage));
+    });
+    // Register background handler
+messaging().setBackgroundMessageHandler(async remoteMessage => {
+  Alert.alert('A new FCM message arrived!', JSON.stringify(remoteMessage));
+  console.log('Message handled in the background!', remoteMessage);
+});
+
+messaging().onNotificationOpenedApp(remoteMessage => {
+  console.log(
+    'Notification caused app to open from background state:',
+    remoteMessage.notification,
+  );
+});
+
+messaging()
+.getInitialNotification()
+.then(remoteMessage => {
+  if (remoteMessage) {
+    console.log(
+      'Notification caused app to open from quit state:',
+      remoteMessage.notification,
+    );
+  }
+
+});
+
+  }
+
+
+ const requestUserPermission = async()=> {
+    const authStatus = await messaging().requestPermission();
+    const enabled =
+      authStatus === messaging.AuthorizationStatus.AUTHORIZED ||
+      authStatus === messaging.AuthorizationStatus.PROVISIONAL;
+  
+    if (enabled) {
+      console.log('Authorization status:', authStatus);
+      firebaseFunctionCall()
+    }
+  }
+
+  useEffect(() => {
+    if(Platform.OS == "ios"){
+      requestUserPermission()
+    }else{
+      firebaseFunctionCall()
+    }
+   
+    return unsubscribe;
+  
+  }, [])
+
+  
+
+ 
   return (
     <>
       <StatusBar barStyle="dark-content" />
